@@ -1,9 +1,9 @@
 // @flow
 
-import React, { Component } from 'react'
-import type { SnackItemType } from './type'
-import TimerMixin from 'react-timer-mixin'
-import reactMixin from 'react-mixin'
+import React, {Component} from 'react';
+import type {SnackItemType} from './type';
+import TimerMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
 
 import {
   View,
@@ -15,19 +15,19 @@ import {
   Easing,
   InteractionManager,
   TouchableWithoutFeedback
-} from 'react-native'
+} from 'react-native';
 
-const DEFAULT_DURATION: number = 5000
-const DEFAULT_FADEOUT_DURATION: number = 250
-const INITIAL_POSITION_BOTTOM: number = -180
-const INITIAL_POSITION_TOP: number = 0
-const TO_POSITION_BOTTOM: number = 180
-const TO_POSITION_TOP: number = -360
+const DEFAULT_DURATION: number = 5000;
+const DEFAULT_FADEOUT_DURATION: number = 250;
+const INITIAL_POSITION_BOTTOM: number = -180;
+const INITIAL_POSITION_TOP: number = 0;
+const TO_POSITION_BOTTOM: number = 180;
+const TO_POSITION_TOP: number = -360;
 
-const STYLE_BANNER_COLOR: string = '#000000'
-const TEXT_COLOR_ACCENT: string = '#0088ff'
+const STYLE_BANNER_COLOR: string = '#000000';
+const TEXT_COLOR_ACCENT: string = '#0088ff';
 
-const { width } = Dimensions.get('window')
+const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   containerBottom: {
@@ -46,22 +46,23 @@ const styles = StyleSheet.create({
 
   text: {
     padding: 15,
-    fontSize: 16
+    fontSize: 14
   },
 
   inlineText: {
     flex: 1,
     padding: 15,
-    fontSize: 16
+    paddingHorizontal: 20,
+    fontSize: 14
   },
 
   buttonContainer: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 20,
     paddingVertical: 10
   },
 
   button: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '500',
     marginLeft: 8
   },
@@ -77,13 +78,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 18
+    // paddingHorizontal: 0
   },
 
   flat: {
     fontSize: 14
   }
-})
+});
 
 export default class SnackBar extends Component {
   state: {
@@ -114,22 +115,22 @@ export default class SnackBar extends Component {
   }
 
   constructor (props: SnackItemType) {
-    super(props)
+    super(props);
 
     this.state = {
       transformOffsetYTop: new Animated.Value(-180),
       transformOffsetYBottom: new Animated.Value(0),
       transformOpacity: new Animated.Value(0)
-    }
+    };
   }
 
   componentDidMount () {
-    this.show()
+    this.show();
   }
 
   componentWillUnmount () {
     if (this.props.isStatic) {
-      this.hide()
+      this.hide();
     }
   }
 
@@ -138,21 +139,21 @@ export default class SnackBar extends Component {
       transformOpacity,
       transformOffsetYTop,
       transformOffsetYBottom
-    } = this.state
+    } = this.state;
 
     const {
       fadeOutDuration,
       isStatic,
       duration,
       position
-    } = this.props
+    } = this.props;
 
     const initialPosition = position === 'top'
       ? INITIAL_POSITION_TOP
-      : INITIAL_POSITION_BOTTOM
+      : INITIAL_POSITION_BOTTOM;
     const transformOffsetY = position === 'top'
       ? transformOffsetYTop
-      : transformOffsetYBottom
+      : transformOffsetYBottom;
 
     Animated.parallel([
       Animated.timing(transformOpacity, {
@@ -169,15 +170,15 @@ export default class SnackBar extends Component {
       })
     ]).start(() => {
       if (isStatic) {
-        return
+        return;
       }
 
       InteractionManager.runAfterInteractions(() => {
         this.setTimeout(() => {
-          this.hide()
-        }, duration)
-      })
-    })
+          this.hide();
+        }, duration);
+      });
+    });
   }
 
   hide = () => {
@@ -185,20 +186,20 @@ export default class SnackBar extends Component {
       transformOpacity,
       transformOffsetYTop,
       transformOffsetYBottom
-    } = this.state
+    } = this.state;
 
     const {
       fadeOutDuration,
       onAutoDismiss,
       position
-    } = this.props
+    } = this.props;
 
     const transformOffsetY = position === 'top'
       ? transformOffsetYTop
-      : transformOffsetYBottom
+      : transformOffsetYBottom;
     const toPosition = position === 'top'
       ? TO_POSITION_TOP
-      : TO_POSITION_BOTTOM
+      : TO_POSITION_BOTTOM;
 
     Animated.parallel([
       Animated.timing(transformOpacity, {
@@ -213,19 +214,21 @@ export default class SnackBar extends Component {
         duration: fadeOutDuration,
         useNativeDriver: true
       })
-    ]).start(() => { onAutoDismiss && onAutoDismiss() })
+    ]).start(() => {
+      onAutoDismiss && onAutoDismiss();
+    });
   }
 
   renderButton = (text: string, onPress: Function = () => {}, style?: Object) => {
-    const { buttonColor } = this.props
+    const {buttonColor} = this.props;
 
     return (
       <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
-        <Text style={[styles.button, style, { color: buttonColor }]}>
+        <Text style={[styles.button, style, {color: buttonColor}]}>
           {text}
         </Text>
       </TouchableOpacity>
-    )
+    );
   }
 
   renderContent = () => {
@@ -236,9 +239,9 @@ export default class SnackBar extends Component {
       onCancel,
       title,
       textColor
-    } = this.props
+    } = this.props;
 
-    const titleElement = <Text style={[styles.text, { color: textColor }]}>{title}</Text>
+    const titleElement = <Text style={[styles.text, {color: textColor}]}>{title}</Text>;
 
     if (confirmText && cancelText) {
       return (
@@ -249,28 +252,28 @@ export default class SnackBar extends Component {
             { this.renderButton(confirmText, onConfirm, styles.flat) }
           </View>
         </View>
-      )
+      );
     }
 
     if (confirmText) {
       return (
         <View style={styles.inlineRow}>
-          <Text style={[styles.inlineText, { color: textColor }]}>{title}</Text>
+          <Text style={[styles.inlineText, {color: textColor}]}>{title}</Text>
           { this.renderButton(confirmText, onConfirm) }
         </View>
-      )
+      );
     }
 
-    return titleElement
+    return titleElement;
   }
 
   render () {
-    const { style, backgroundColor, position, tapToClose } = this.props
+    const {style, backgroundColor, position, tapToClose} = this.props;
 
-    const isTop = position === 'top'
+    const isTop = position === 'top';
     const transformOffsetY = isTop
       ? this.state.transformOffsetYTop
-      : this.state.transformOffsetYBottom
+      : this.state.transformOffsetYBottom;
     return (
       <TouchableWithoutFeedback onPress={() => tapToClose && this.hide()}>
         <Animated.View
@@ -278,7 +281,7 @@ export default class SnackBar extends Component {
             isTop && styles.containerTop || !isTop && styles.containerBottom,
             {
               opacity: this.state.transformOpacity,
-              transform: [{ translateY: transformOffsetY }],
+              transform: [{translateY: transformOffsetY}],
               backgroundColor
             },
             style
@@ -287,8 +290,8 @@ export default class SnackBar extends Component {
           { this.renderContent() }
         </Animated.View>
       </TouchableWithoutFeedback>
-    )
+    );
   }
 }
 
-reactMixin(SnackBar.prototype, TimerMixin)
+reactMixin(SnackBar.prototype, TimerMixin);
