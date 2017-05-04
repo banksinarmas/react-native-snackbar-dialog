@@ -51,13 +51,14 @@ const styles = StyleSheet.create({
 
   inlineText: {
     flex: 1,
-    padding: 15,
-    paddingHorizontal: 20,
+    paddingVertical: 15,
+    paddingLeft: 20,
+    paddingRight: 5,
     fontSize: 14
   },
 
   buttonContainer: {
-    paddingHorizontal: 20,
+    paddingRight: 20,
     paddingVertical: 10
   },
 
