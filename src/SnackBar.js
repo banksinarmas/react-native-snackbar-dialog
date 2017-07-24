@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
   actionRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginBottom: 5
+    marginBottom: 5,
+    marginTop: -10
   },
 
   inlineRow: {
