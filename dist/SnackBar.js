@@ -1,11 +1,11 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName='src/SnackBar.js';var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
 
 var _react=require('react');var _react2=_interopRequireDefault(_react);
 
 var _reactTimerMixin=require('react-timer-mixin');var _reactTimerMixin2=_interopRequireDefault(_reactTimerMixin);
 var _reactMixin=require('react-mixin');var _reactMixin2=_interopRequireDefault(_reactMixin);
 
-var _reactNative=require('react-native');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var babelPluginFlowReactPropTypes_proptype_SnackItemType=require('./type').babelPluginFlowReactPropTypes_proptype_SnackItemType||require('prop-types').PropTypes.any;
+var _reactNative=require('react-native');function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var babelPluginFlowReactPropTypes_proptype_SnackItemType=require('./type').babelPluginFlowReactPropTypes_proptype_SnackItemType||require('prop-types').any;
 
 
 
@@ -221,8 +221,8 @@ renderButton=function(text){var onPress=arguments.length>1&&arguments[1]!==undef
 buttonColor=_this.props.buttonColor;
 
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{style:styles.buttonContainer,onPress:onPress},
-_react2.default.createElement(_reactNative.Text,{style:[styles.button,style,{color:buttonColor}]},
+_react2.default.createElement(_reactNative.TouchableOpacity,{style:styles.buttonContainer,onPress:onPress,__source:{fileName:_jsxFileName,lineNumber:224}},
+_react2.default.createElement(_reactNative.Text,{style:[styles.button,style,{color:buttonColor}],__source:{fileName:_jsxFileName,lineNumber:225}},
 text)));
 
 
@@ -240,13 +240,13 @@ renderContent=function(){var _this$props3=
 
 _this.props,confirmText=_this$props3.confirmText,onConfirm=_this$props3.onConfirm,cancelText=_this$props3.cancelText,onCancel=_this$props3.onCancel,title=_this$props3.title,textColor=_this$props3.textColor,textStyle=_this$props3.textStyle;
 
-var titleElement=_react2.default.createElement(_reactNative.Text,{style:[styles.text,{color:textColor},textStyle]},title);
+var titleElement=_react2.default.createElement(_reactNative.Text,{style:[styles.text,{color:textColor},textStyle],__source:{fileName:_jsxFileName,lineNumber:243}},title);
 
 if(confirmText&&cancelText){
 return(
-_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:247}},
 titleElement,
-_react2.default.createElement(_reactNative.View,{style:styles.actionRow},
+_react2.default.createElement(_reactNative.View,{style:styles.actionRow,__source:{fileName:_jsxFileName,lineNumber:249}},
 _this.renderButton(cancelText,onCancel,styles.flat),
 _this.renderButton(confirmText,onConfirm,styles.flat))));
 
@@ -256,15 +256,15 @@ _this.renderButton(confirmText,onConfirm,styles.flat))));
 
 if(confirmText){
 return(
-_react2.default.createElement(_reactNative.View,{style:styles.inlineRow},
-_react2.default.createElement(_reactNative.Text,{style:[styles.inlineText,{color:textColor}]},title),
+_react2.default.createElement(_reactNative.View,{style:styles.inlineRow,__source:{fileName:_jsxFileName,lineNumber:259}},
+_react2.default.createElement(_reactNative.Text,{style:[styles.inlineText,{color:textColor}],__source:{fileName:_jsxFileName,lineNumber:260}},title),
 _this.renderButton(confirmText,onConfirm)));
 
 
 }
 
 return titleElement;
-};_this.state={transformOffsetYTop:new _reactNative.Animated.Value(-180),transformOffsetYBottom:new _reactNative.Animated.Value(0),transformOpacity:new _reactNative.Animated.Value(0)};return _this;}_createClass(SnackBar,[{key:'componentDidMount',value:function componentDidMount(){this.show();}},{key:'componentWillUnmount',value:function componentWillUnmount(){if(this.props.isStatic){this.hide();}}},{key:'render',value:function render()
+};_this.state={transformOffsetYTop:new _reactNative.Animated.Value(-180),transformOffsetYBottom:new _reactNative.Animated.Value(0),transformOpacity:new _reactNative.Animated.Value(0)};return _this;}SnackBar.propTypes=babelPluginFlowReactPropTypes_proptype_SnackItemType===require('prop-types').any?{}:babelPluginFlowReactPropTypes_proptype_SnackItemType;_createClass(SnackBar,[{key:'componentDidMount',value:function componentDidMount(){this.show();}},{key:'componentWillUnmount',value:function componentWillUnmount(){if(this.props.isStatic){this.hide();}}},{key:'render',value:function render()
 
 {var _this2=this;var _props=
 this.props,style=_props.style,renderContent=_props.renderContent,backgroundColor=_props.backgroundColor,position=_props.position,tapToClose=_props.tapToClose;
@@ -274,7 +274,7 @@ var transformOffsetY=isTop?
 this.state.transformOffsetYTop:
 this.state.transformOffsetYBottom;
 return(
-_react2.default.createElement(_reactNative.TouchableWithoutFeedback,{onPress:function onPress(){return tapToClose&&_this2.hide();}},
+_react2.default.createElement(_reactNative.TouchableWithoutFeedback,{onPress:function onPress(){return tapToClose&&_this2.hide();},__source:{fileName:_jsxFileName,lineNumber:277}},
 _react2.default.createElement(_reactNative.Animated.View,{
 style:[
 isTop&&styles.containerTop||!isTop&&styles.containerBottom,
@@ -283,14 +283,14 @@ opacity:this.state.transformOpacity,
 transform:[{translateY:transformOffsetY}],
 backgroundColor:backgroundColor},
 
-style]},
+style],__source:{fileName:_jsxFileName,lineNumber:278}},
 
 
 renderContent?renderContent():this.renderContent())));
 
 
 
-}}]);return SnackBar;}(_react.Component);SnackBar.defaultProps={fadeOutDuration:DEFAULT_FADEOUT_DURATION,duration:DEFAULT_DURATION,isStatic:false,onConfirm:Function,onCancel:Function,onAutoDismiss:Function,style:{},renderContent:null,backgroundColor:STYLE_BANNER_COLOR,buttonColor:TEXT_COLOR_ACCENT,textColor:'white',position:'bottom'};exports.default=SnackBar;
+}}]);return SnackBar;}(_react.Component);SnackBar.defaultProps={fadeOutDuration:DEFAULT_FADEOUT_DURATION,duration:DEFAULT_DURATION,isStatic:false,onConfirm:Function,onCancel:Function,onAutoDismiss:Function,style:{},renderContent:null,backgroundColor:STYLE_BANNER_COLOR,buttonColor:TEXT_COLOR_ACCENT,textColor:'white',position:'bottom'};SnackBar.propTypes=babelPluginFlowReactPropTypes_proptype_SnackItemType===require('prop-types').any?{}:babelPluginFlowReactPropTypes_proptype_SnackItemType;exports.default=SnackBar;
 
 
 (0,_reactMixin2.default)(SnackBar.prototype,_reactTimerMixin2.default);
